@@ -4,4 +4,4 @@ prueba oxygen
 ## Instalado
 vite, reac-icon.
 
-### Faltó guardar en localStorage
+##### Faltó guardar en localStorage
