@@ -1,7 +1,7 @@
 # convertidor_de_unidades
 prueba oxygen
 
-##Instalado
+## Instalado
 vite, reac-icon.
 
-###Faltó guardar en localStorage
+### Faltó guardar en localStorage
