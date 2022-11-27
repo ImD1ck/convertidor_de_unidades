@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ImD1ck.github.io/convertidor_de_unidades",
+  "homepage": "https://imd1ck.github.io/convertidor_de_unidades",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
