@@ -9,7 +9,7 @@ const App = () => {
     <div className="layout">
       <Header />
       <main className="main">
-        <Convert setGuardados={setGuardados} />
+        <Convert guardados={guardados} setGuardados={setGuardados} />
         <Saved guardados={guardados} setGuardados={setGuardados} />
       </main>
       <Footer />

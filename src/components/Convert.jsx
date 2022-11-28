@@ -6,11 +6,22 @@ import units from "../utils/units";
 
 import "../styles/Convert.css";
 
-const Convert = ({ setGuardados }) => {
+const Convert = ({ guardados, setGuardados }) => {
   const [favorite, setFavorite] = useState(false);
   const [inputValue, setInputValue] = useState();
   const [selectValue, setSelectValue] = useState(0);
   const [result, setResult] = useState(0);
+
+  const handleFavorite = () => {
+    if (isNaN(inputValue) || inputValue === 0) {
+      alert("Tienes que poner un número");
+      return;
+    }
+    const newFav = `${inputValue} ${units[selectValue].input} → ${result} ${units[selectValue].result}`;
+    setGuardados((favorites) => [...favorites, newFav]);
+    setFavorite((prev) => !prev);
+    localStorage.setItem("favorites", JSON.stringify([...guardados, newFav]));
+  };
 
   useEffect(() => {
     if (favorite && !isNaN(inputValue)) setFavorite(false);
@@ -57,7 +68,7 @@ const Convert = ({ setGuardados }) => {
             id="input"
             className="input"
             placeholder="0"
-            value={inputValue}
+            value={inputValue ? inputValue : ""}
             onChange={(event) => setInputValue(parseFloat(event.target.value))}
           />
           <label htmlFor="input">{units[selectValue].input}</label>
@@ -67,15 +78,7 @@ const Convert = ({ setGuardados }) => {
       <div className="convert__footer">
         <button
           className="button__favorite"
-          onClick={() => {
-            if (isNaN(inputValue) || inputValue === 0) {
-              alert("Tienes que poner un número");
-              return;
-            }
-            const newFav = `${inputValue} ${units[selectValue].input} → ${result} ${units[selectValue].result}`;
-            setGuardados((favorites) => [...favorites, newFav]);
-            setFavorite((prev) => !prev);
-          }}
+          onClick={handleFavorite}
           disabled={favorite}
         >
           <AiFillHeart className={`icon ${favorite ? "" : "favicon"}`} />
